@@ -10,7 +10,7 @@
 
     <ImageView
         android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:src="@drawable/obvious_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
