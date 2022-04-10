@@ -9,8 +9,10 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
+import com.kontra.utils.Constants
 import com.obvious.nasapicturresapp.R
 import com.obvious.nasapicturresapp.databinding.ActivityImageGridBinding
+import com.obvious.nasapicturresapp.repository.model.NasaPictureModel
 import com.obvious.nasapicturresapp.ui.imagedetail.view.ImageDetailActivity
 import com.obvious.nasapicturresapp.ui.imagegrid.adapter.ImageAdapter
 import com.obvious.nasapicturresapp.utils.UIHelper
@@ -19,7 +21,7 @@ class ImageGridActivity : AppCompatActivity(), ImageAdapter.OnSingleItemClickLis
     View.OnClickListener {
 
     private lateinit var binding: ActivityImageGridBinding
-    private var list = ArrayList<String>()
+    private var list = ArrayList<NasaPictureModel>()
     private lateinit var adapter: ImageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +56,9 @@ class ImageGridActivity : AppCompatActivity(), ImageAdapter.OnSingleItemClickLis
     }
 
     override fun onSingleItemClick(position: Int) {
-        startActivity(Intent(this, ImageDetailActivity::class.java))
+        var intent = Intent(this, ImageDetailActivity::class.java)
+        intent.putExtra(Constants.SINGLE_ITEM, list.get(position))
+        startActivity(intent)
     }
 
     override fun onClick(v: View?) {

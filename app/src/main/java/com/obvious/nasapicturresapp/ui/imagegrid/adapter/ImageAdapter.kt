@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.obvious.nasapicturresapp.R
 import com.obvious.nasapicturresapp.databinding.SingleImageItemBinding
+import com.obvious.nasapicturresapp.repository.model.NasaPictureModel
 
 internal class ImageAdapter(
     val context: Context,
-    val list: ArrayList<String>,
+    val list: ArrayList<NasaPictureModel>,
     val onSingleItemClickListener: OnSingleItemClickListener
 ) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
@@ -42,7 +43,7 @@ internal class ImageAdapter(
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        Glide.with(context).load(list.get(position)).centerCrop()
+        Glide.with(context).load(list.get(position).url).centerCrop().error(R.mipmap.ic_launcher)
             .into(holder.binding.image)
     }
 
