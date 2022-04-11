@@ -27,6 +27,7 @@ class ImageDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityImageDetailBinding
     private lateinit var list : ArrayList<NasaPictureModel>
+    private var position = 0
 
     private var fragment: Fragment? = null
     private var viewPagerAdapter: ViewPagerAdapter? = null
@@ -54,8 +55,10 @@ class ImageDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupUI() {
-        if(intent!=null && intent.hasExtra(Constants.ALL_ITEMS))
+        if(intent!=null && intent.hasExtra(Constants.ALL_ITEMS)){
             list = intent.getParcelableArrayListExtra(Constants.ALL_ITEMS)!!
+            position = intent.getIntExtra(Constants.POSITION, 0)
+        }
 
         setupViewPager()
     }
@@ -63,6 +66,8 @@ class ImageDetailActivity : AppCompatActivity(), View.OnClickListener {
     private fun setupViewPager() {
         viewPagerAdapter = ViewPagerAdapter()
         binding.viewPager.setAdapter(viewPagerAdapter)
+
+        binding.viewPager.currentItem = position
     }
 
     internal inner class ViewPagerAdapter() :

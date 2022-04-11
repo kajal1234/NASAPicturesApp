@@ -101,6 +101,7 @@ class ImageGridActivity : AppCompatActivity(), ImageAdapter.OnSingleItemClickLis
     override fun onSingleItemClick(position: Int) {
         var intent = Intent(this, ImageDetailActivity::class.java)
         intent.putParcelableArrayListExtra(Constants.ALL_ITEMS, list)
+        intent.putExtra(Constants.POSITION, position)
         startActivity(intent)
     }
 

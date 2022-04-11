@@ -5,5 +5,6 @@ class Constants {
         val BASE_URL = "https://drive.google.com/"
         val ALL_ITEMS = "_all_item"
         val SINGLE_ITEM = "_single_item"
+        val POSITION = "_position"
     }
 }
