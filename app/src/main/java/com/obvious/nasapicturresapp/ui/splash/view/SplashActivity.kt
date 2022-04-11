@@ -13,6 +13,11 @@ import com.obvious.nasapicturresapp.R
 import com.obvious.nasapicturresapp.databinding.ActivitySplashBinding
 import com.obvious.nasapicturresapp.ui.imagegrid.view.ImageGridActivity
 
+/**
+ * Developed by Kajal Kukdeja on 10,April,2022
+ * Launcher screen
+ */
+
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding

@@ -7,19 +7,29 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.LinearLayout
+import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
-import com.bumptech.glide.Glide
-import com.kontra.utils.Constants
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.obvious.nasapicturresapp.utils.Constants
 import com.obvious.nasapicturresapp.R
 import com.obvious.nasapicturresapp.databinding.ActivityImageDetailBinding
-import com.obvious.nasapicturresapp.repository.model.NasaPictureModel
+import com.obvious.nasapicturresapp.data.model.NasaPictureModel
+import com.obvious.nasapicturresapp.ui.imagedetail.view.fragments.DataFragment
 import com.obvious.nasapicturresapp.utils.UIHelper
-import kotlin.math.sin
+
+/**
+ * Developed by Kajal Kukdeja on 11,April,2022
+ * Designed to show swipable view for every image fetched from server
+ */
 
 class ImageDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityImageDetailBinding
-    private lateinit var singleItem : NasaPictureModel
+    private lateinit var list : ArrayList<NasaPictureModel>
+
+    private var fragment: Fragment? = null
+    private var viewPagerAdapter: ViewPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,15 +54,35 @@ class ImageDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupUI() {
-        if(intent!=null && intent.hasExtra(Constants.SINGLE_ITEM))
-            singleItem = intent.getParcelableExtra(Constants.SINGLE_ITEM)!!
+        if(intent!=null && intent.hasExtra(Constants.ALL_ITEMS))
+            list = intent.getParcelableArrayListExtra(Constants.ALL_ITEMS)!!
 
-        Glide.with(this).load(singleItem.url).centerCrop().error(R.mipmap.ic_launcher)
-            .into(binding.image)
+        setupViewPager()
+    }
 
-        binding.imageTitle.text = singleItem.title
-        binding.imageDesc.text = singleItem.explanation
-        binding.imageDate.text = singleItem.date
+    private fun setupViewPager() {
+        viewPagerAdapter = ViewPagerAdapter()
+        binding.viewPager.setAdapter(viewPagerAdapter)
+    }
+
+    internal inner class ViewPagerAdapter() :
+        FragmentStateAdapter(this) {
+        @NonNull
+        override fun createFragment(position: Int): Fragment {
+            // Return a NEW fragment instance in createFragment(int)
+            fragment = DataFragment.newInstance(list.get(position))
+            return fragment!!
+
+
+        }
+
+        override fun getItemCount(): Int {
+            return list.size
+        }
+
+        fun getTabView(position: Int): View? {
+            return null
+        }
     }
 
     private fun setupListener() {

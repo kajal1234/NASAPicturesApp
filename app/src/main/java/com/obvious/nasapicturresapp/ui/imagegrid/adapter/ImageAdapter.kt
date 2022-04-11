@@ -1,6 +1,7 @@
 package com.obvious.nasapicturresapp.ui.imagegrid.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.obvious.nasapicturresapp.R
 import com.obvious.nasapicturresapp.databinding.SingleImageItemBinding
-import com.obvious.nasapicturresapp.repository.model.NasaPictureModel
+import com.obvious.nasapicturresapp.data.model.NasaPictureModel
+
+/**
+ * Developed by Kajal Kukdeja on 10,April,2022
+ * Image list adapter to adapt data on screen
+ */
 
 internal class ImageAdapter(
     val context: Context,

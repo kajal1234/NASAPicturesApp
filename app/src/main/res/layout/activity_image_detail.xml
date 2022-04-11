@@ -57,69 +57,14 @@
 
         </LinearLayout>
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_layout"
-            android:layout_margin="15dp"
-            app:cardBackgroundColor="@color/white">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="250dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/image"
-                    android:background="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/image_title"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_semibold"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/image_desc"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_title"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/image_date"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_desc"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/opensans_light"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
+            app:layout_constraintTop_toBottomOf="@+id/top_layout"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
